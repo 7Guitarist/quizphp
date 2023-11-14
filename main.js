@@ -4,9 +4,13 @@
 //   )
 // );
 if (
-  ["admin.php", "user-header.php", "user.php"].includes(
-    window.location.pathname.split("/").pop()
-  )
+  [
+    "admin.php",
+    "user-header.php",
+    "user.php",
+    "playground.php",
+    "add-quiz.php",
+  ].includes(window.location.pathname.split("/").pop())
 ) {
   // Profile Dropdown
   function toggleDropdown() {
@@ -25,32 +29,9 @@ if (
   };
 }
 
+// Sign Up
+console.log(window.location.pathname.split("/").pop() === "sign-up.php");
 if (window.location.pathname.split("/").pop() === "sign-up.php") {
-  // document.getElementById("phone").addEventListener("input", function (event) {
-  //   let inputValue = event.target.value;
-  //   event.target.value = inputValue.replace(/[^0-9]/g, "");
-  // });
-
-  // document.getElementById("phone").addEventListener("input", function (event) {
-  //   let inputValue = event.target.value;
-  //   event.target.value = inputValue.replace(/[^0-9\- ]/g, "");
-  // });
-
-  // document.getElementById("phone").addEventListener("input", function (event) {
-  //   let inputValue = event.target.value;
-  //   inputValue = inputValue.replace(/[^\d]/g, ""); // Remove all non-digit characters
-  //   if (inputValue.length > 3) {
-  //     inputValue = inputValue.substring(0, 4) + " " + inputValue.substring(4);
-  //   }
-  //   if (inputValue.length > 8) {
-  //     inputValue = inputValue.substring(0, 8) + " " + inputValue.substring(8);
-  //   }
-  //   // if (inputValue.length > 13) {
-  //   //   inputValue = inputValue.substring(0, 12) + "-" + inputValue.substring(12);
-  //   // }
-  //   event.target.value = inputValue;
-  // });
-
   function formatPhoneNumber(event) {
     let inputValue = event.target.value;
     inputValue = inputValue.replace(/[^\d]/g, ""); // Remove all non-digit characters
@@ -60,11 +41,26 @@ if (window.location.pathname.split("/").pop() === "sign-up.php") {
     if (inputValue.length > 8) {
       inputValue = inputValue.substring(0, 8) + " " + inputValue.substring(8);
     }
-    if (inputValue.length > 13) {
-      inputValue = inputValue.substring(0, 12) + "-" + inputValue.substring(12);
-    }
     event.target.value = inputValue;
   }
+
+  document
+    .getElementById("signup")
+    .addEventListener("submit", function (event) {
+      // Get the phone input element
+      const phoneInput = document.getElementById("phone");
+
+      // Remove spaces and check the length
+      const phoneValue = phoneInput.value.replace(/\s/g, "");
+
+      // Check if the phone number has exactly 11 digits
+      if (phoneValue.length !== 11) {
+        // alert("Please enter a valid 11-digit phone number.");
+        let userErr = document.getElementById("phone-err");
+        userErr.classList.add("show");
+        event.preventDefault(); // Prevent form submission
+      }
+    });
 
   function checkPassword(event) {
     var passwordInput = document.getElementById("password");
@@ -85,4 +81,34 @@ if (window.location.pathname.split("/").pop() === "sign-up.php") {
     .addEventListener("submit", function (event) {
       checkPassword(event);
     });
+
+  function formatName(event) {
+    let inputValue = event.target.value;
+    // if (/[^a-zA-Z\s.\u00F1\u00D1-]/.test(inputValue)) {
+    //   // Display an alert or perform any other action
+    //   alert(
+    //     "Non-alphabetic characters (excluding spaces, dots, hyphens, ñ, and Ñ) are not allowed in this field."
+    //   );
+    // }
+    // Remove all characters except letters, spaces, and hyphens
+    // inputValue = inputValue.replace(/[^a-zA-Z\s.-]/g, "");
+    // console.log(inputValue);
+    inputValue = inputValue.replace(/[^a-zA-Z\s.\u00F1\u00D1-]/g, "");
+
+    event.target.value = inputValue;
+  }
+}
+
+// Log In
+if (window.location.pathname.split("/").pop() === "log-in.php") {
+  function enableLoginButton() {
+    const passwordInput = document.getElementById("password");
+    const loginButton = document.getElementById("loginButton");
+
+    if (passwordInput.value.length >= 8) {
+      loginButton.removeAttribute("disabled");
+    } else {
+      loginButton.setAttribute("disabled", "disabled");
+    }
+  }
 }

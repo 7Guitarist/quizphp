@@ -1,7 +1,19 @@
 <?php
 include 'connection.php';
+session_start();
+
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $firstname = $_SESSION['firstname'];
+    $lastname = $_SESSION['lastname'];
+} else {
+    header('Location: ../index.php');
+    exit();
+}
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +26,7 @@ include 'connection.php';
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="<?php echo basename($_SERVER['PHP_SELF'], '.php'); ?>">
  
     <div class="header">
       <div class="header-inner">
@@ -24,7 +36,7 @@ include 'connection.php';
         <div class="header-right">
           <div class="profile-wrap">
             <div class="profile-images" onclick="toggleDropdown()">
-              <p class="greet">Hello, Efraim!</p>
+              <p class="greet">Hello, <?php echo $firstname; ?>!</p>
               <div class="profile">
                 <img
                   src="../images/efraim.jpg"
@@ -48,8 +60,6 @@ include 'connection.php';
     <div class="user-intro">
       <div class="ui-wrapper">
         <p>Welcome,</p>
-        <h2>Efraim Gondraneos</h2>
+        <h2><?php echo $firstname . ' ' . $lastname; ?></h2>
       </div>
     </div>
-  </body>
-</html>

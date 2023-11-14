@@ -621,7 +621,8 @@ body {
 
 /* #region Sign Up */
 body.sign-up .header-right,
-body.log-in .header-right {
+body.log-in .header-right,
+body.admin-login .header-right {
   display: none;
 }
 .sign-up-wrapper {
@@ -656,6 +657,10 @@ body.log-in .header-right {
   margin: 0 auto;
 }
 
+.admin-add-quiz {
+  background: #000;
+}
+
 .sign-up-main .su-text {
   color: var(--clr-primary);
   position: relative;
@@ -682,18 +687,21 @@ body.log-in .header-right {
   height: 1px;
 }
 
-.sign-up-main .sign-up-form {
+.sign-up-main .sign-up-form,
+.admin-add-quiz .add-quiz-form {
   padding: 10px 35px 20px;
   /* TODO: */
   padding: 10px 35px 33px;
 }
 
-.sign-up-main .signup-container {
+.sign-up-main .signup-container,
+.admin-add-quiz .add-quiz-container {
   position: relative;
   margin-bottom: 20px;
 }
 
-.sign-up-main input {
+.sign-up-main input,
+.admin-add-quiz input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -703,7 +711,8 @@ body.log-in .header-right {
   outline: none;
 }
 
-.sign-up-main label {
+.sign-up-main label,
+.admin-add-quiz label {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -714,17 +723,22 @@ body.log-in .header-right {
 }
 
 .sign-up-main input:focus + label,
-.sign-up-main input:not(:placeholder-shown) + label {
+.admin-add-quiz input:focus + label,
+.sign-up-main input:not(:placeholder-shown) + label,
+.admin-add-quiz input:not(:placeholder-shown) + label {
   top: -2px;
   transform: scale(0.88) translateX(-8px) translateY(-50%);
   overflow: visible;
   background: #000;
 }
-.sign-up-main .signup-container input:focus {
+
+.sign-up-main .signup-container input:focus,
+.admin-add-quiz .add-quiz-container input:focus {
   border-color: var(--clr-primary);
 }
 
-.sign-up-main .signup-container input:focus + label {
+.sign-up-main .signup-container input:focus + label,
+.admin-add-quiz .add-quiz-container input:focus + label {
   color: var(--clr-primary);
 }
 
@@ -750,21 +764,31 @@ body.log-in .header-right {
   color: white;
 }
 
-.sign-up-main .signup-container label {
+.sign-up-main .signup-container label,
+.admin-add-quiz .signup-container label {
   text-transform: capitalize;
 }
 
 .sign-up-main input,
-.sign-up-main select {
+.sign-up-main select,
+.admin-add-quiz input {
   background: #000;
   color: #fff;
+}
+
+.admin-add-quiz input,
+.admin-add-quiz,
+.admin-add-quiz input:not(:placeholder-shown) + label,
+.admin-add-quiz input:focus + label {
+  background: #111;
 }
 
 .sign-up-main select {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.sign-up-main .btn-submit {
+.sign-up-main .btn-submit,
+.admin-add-quiz .btn-submit {
   position: relative;
   color: #fff;
   cursor: pointer;
@@ -787,7 +811,12 @@ body.log-in .header-right {
   transition: all 0.3s ease-in;
 }
 
-.sign-up-main .btn-submit:hover {
+.sign-up-main .btn-submit:disabled {
+  opacity: 0.5 !important;
+}
+
+.sign-up-main .btn-submit:hover,
+.admin-add-quiz .btn-submit:hover {
   background: var(--clr-secondary);
 }
 
@@ -941,3 +970,50 @@ body.user {
   margin: 90px auto;
 }
 /* #endregion user */
+
+/* #region admin */
+.admin {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  background: #0d1224;
+  min-height: 100vh;
+  padding-top: 82px;
+}
+
+.admin-panel,
+.admin-add-quiz {
+  padding-top: 40px;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 30px;
+}
+
+.admin-nav a span {
+  width: 45px;
+}
+
+.admin-nav a {
+  position: relative;
+  transition: color ease 0.2s;
+}
+
+.admin-nav a:hover {
+  color: var(--clr-primary);
+}
+
+.admin-nav a::before {
+  content: "";
+  position: absolute;
+  bottom: -17px;
+  display: block;
+  pointer-events: none;
+  background: #152045;
+  height: 1px;
+  width: 100%;
+}
+/* #endregion admin */

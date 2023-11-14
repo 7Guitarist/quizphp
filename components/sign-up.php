@@ -1,18 +1,59 @@
 <?php
 include 'header.php'; 
 include 'connection.php';
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <script defer src="../main.js"></script>
-  </head>
-  <body class="<?php echo basename($_SERVER['PHP_SELF'], '.php'); ?>">
+  if(isset($_POST["submit"])) {
+           $fname = $_POST['fname'];
+          $lname = $_POST['lname'];
+          $mname = $_POST['mname'];
+          $course = $_POST['course'];
+          $year = $_POST['year'];
+          $subject = $_POST['subject'];
+          $section = $_POST['section'];
+          $address = $_POST['address'];
+          $phone = $_POST['phone'];
+          $username = $_POST['username'];
+          $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
+
+        $count=0;
+        $res=mysqli_query($con,"select * from user where username='$_POST[username]'") or die(mysqli_error($con));
+
+        $count=mysqli_num_rows($res);
+
+        if($count>0) { ?>
+     <script defer>
+      document.addEventListener("DOMContentLoaded", function() {
+            let userErr = document.getElementById("user-err");
+            userErr.classList.add("show");
+            <?php if (isset($_POST["submit"])): ?>
+                document.getElementById('username').focus();
+            <?php endif; ?>
+              });
+        </script>
+    <?php
+    } else { 
+       mysqli_query($con,"insert into user values(NULL,'$fname','$lname','$mname','$course','$year','$subject','$section','$address','$phone','$username','$hashedPassword')")
+      ?>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+      swal(
+        "Congratulations!",
+        "Your account has been successfully created.",
+        "success"
+      ).then((value) => {
+        if (value) {
+          window.location.href = "log-in.php";
+        } else {
+          window.location.href = "log-in.php";
+        }
+      });
+      });
+    </script>
+    <?php
+    } 
+
+  } 
+?>
     <div class="sign-up-wrapper">
       <div class="sign-up-main">
         <div class="sign-up-content">
@@ -34,8 +75,13 @@ include 'connection.php';
                 id="fname"
                 name="fname"
                 placeholder=" "
+                oninput="formatName(event)"
+             value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['fname']) : ''; ?>"
               />
               <label for="fname">First Name</label>
+              <span class="err" id="f-err"
+                ><span class="fa-solid fa-triangle-exclamation"></span>Non-alphabetic characters (excluding spaces, dots, hyphens, ñ, and Ñ) are not allowed in this field.</span
+              >
             </div>
             <div class="signup-container">
               <input
@@ -44,8 +90,13 @@ include 'connection.php';
                 id="lname"
                 name="lname"
                 placeholder=" "
+                oninput="formatName(event)"
+                 value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['lname']) : ''; ?>"
               />
               <label for="lname">Last Name</label>
+              <span class="err" id="l-err"
+                ><span class="fa-solid fa-triangle-exclamation"></span>Non-alphabetic characters (excluding spaces, dots, hyphens, ñ, and Ñ) are not allowed in this field.</span
+              >
             </div>
             <div class="signup-container">
               <input
@@ -54,26 +105,32 @@ include 'connection.php';
                 id="mname"
                 name="mname"
                 placeholder=" "
+                oninput="formatName(event)"
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['mname']) : ''; ?>"
               />
               <label for="mname">Middle name</label>
+              <span class="err" id="m-err"
+                ><span class="fa-solid fa-triangle-exclamation"></span>Non-alphabetic characters (excluding spaces, dots, hyphens, ñ, and Ñ) are not allowed in this field.</span
+              >
             </div>
             <div class="signup-container">
               <select id="course" required name="course">
                 <option value="" disabled selected>Select a course</option>
-                <option value="BSIT">BSIT</option>
-                <option value="BSCpE">BSCpE</option>
-                <option value="BSEcE">BSEcE</option>
-                <option value="BSIT-BA">BSIT-BA</option>
-                <option value="BSEMC">BSEMC</option>
+                <option value="BSIT" <?php echo (isset($_POST['submit']) && $_POST['course'] === 'BSIT') ? 'selected' : ''; ?>>BSIT</option>
+                <option value="BSCpE" <?php echo (isset($_POST['submit']) && $_POST['course'] === 'BSCpE') ? 'selected' : ''; ?>>BSCpE</option>
+                <option value="BSEcE" <?php echo (isset($_POST['submit']) && $_POST['course'] === 'BSEcE') ? 'selected' : ''; ?>>BSEcE</option>
+                <option value="BSIT-BA" <?php echo (isset($_POST['submit']) && $_POST['course'] === 'BSIT-BA') ? 'selected' : ''; ?>>BSIT-BA</option>
+                <option value="BSEMC" <?php echo (isset($_POST['submit']) && $_POST['course'] === 'BSEMC') ? 'selected' : ''; ?>>BSEMC</option>
               </select>
             </div>
             <div class="signup-container">
               <select id="year" required name="year">
                 <option value="" disabled selected>Select a year level</option>
-                <option value="1">1st year</option>
-                <option value="2">2nd year</option>
-                <option value="3">3rd year</option>
-                <option value="4">4th year</option>
+                     <option value="1" <?php echo (isset($_POST['submit']) && $_POST['year'] === '1') ? 'selected' : ''; ?>>1st year</option>
+        <option value="2" <?php echo (isset($_POST['submit']) && $_POST['year'] === '2') ? 'selected' : ''; ?>>2nd year</option>
+        <option value="3" <?php echo (isset($_POST['submit']) && $_POST['year'] === '3') ? 'selected' : ''; ?>>3rd year</option>
+        <option value="4" <?php echo (isset($_POST['submit']) && $_POST['year'] === '4') ? 'selected' : ''; ?>>4th year</option>
+               
               </select>
             </div>
             <div class="signup-container">
@@ -83,6 +140,8 @@ include 'connection.php';
                 id="subject"
                 name="subject"
                 placeholder=" "
+                
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['subject']) : ''; ?>"
               />
               <label for="subject">subject</label>
             </div>
@@ -93,6 +152,7 @@ include 'connection.php';
                 id="section"
                 name="section"
                 placeholder=" "
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['section']) : ''; ?>"
               />
               <label for="section">section</label>
             </div>
@@ -103,6 +163,7 @@ include 'connection.php';
                 id="address"
                 name="address"
                 placeholder=" "
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['address']) : ''; ?>"
               />
               <label for="address">address</label>
             </div>
@@ -112,11 +173,17 @@ include 'connection.php';
                   id="phone"
                   name="phone"
                   pattern="[0-9\s]*"
-                  title="Please enter only numbers"
+                  
                   maxlength="13"
                   placeholder=" "
+                  title="Please enter only numbers"
+                  required
                   oninput="formatPhoneNumber(event)"
+                  value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['phone']) : ''; ?>"
               /><label for="phone">Contact Number</label>
+              <span class="err" id="phone-err"
+                ><span class="fa-solid fa-triangle-exclamation"></span>Please enter a valid 11-digit phone number.</span
+              >
             </div>
             <div class="signup-container user">
               <input
@@ -125,6 +192,7 @@ include 'connection.php';
                 id="username"
                 name="username"
                 placeholder=" "
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['username']) : ''; ?>"
               />
               <label for="username">username</label>
               <span class="err" id="user-err"
@@ -138,6 +206,7 @@ include 'connection.php';
                 id="password"
                 name="password"
                 placeholder=" "
+                value="<?php echo isset($_POST['submit']) ? htmlspecialchars($_POST['password']) : ''; ?>"
               />
               <label for="password">Password</label>
               <span class="err" id="pass-err"
@@ -162,54 +231,6 @@ include 'connection.php';
       </div>
     </div>
 
-    <?php
-      if(isset($_POST["submit"])) {
-           $fname = $_POST['fname'];
-          $lname = $_POST['lname'];
-          $mname = $_POST['mname'];
-          $course = $_POST['course'];
-          $year = $_POST['year'];
-          $subject = $_POST['subject'];
-          $section = $_POST['section'];
-          $address = $_POST['address'];
-          $phone = $_POST['phone'];
-          $username = $_POST['username'];
-          $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
-
-        $count=0;
-        $res=mysqli_query($con,"select * from user where username='$_POST[username]'") or die(mysqli_error($con));
-
-        $count=mysqli_num_rows($res);
-
-        if($count>0) { ?>
-    <script>
-      sweetAlert(
-        "Oops",
-        "Username already exists. Please choose a different username.",
-        "error"
-      );
-    </script>
-    <?php
-    } else { 
-       mysqli_query($con,"insert into user values(NULL,'$fname','$lname','$mname','$course','$year','$subject','$section','$address','$phone','$username','$hashedPassword')")
-      ?>
-    <script>
-      swal(
-        "Congratulations!",
-        "Your account has been successfully created.",
-        "success"
-      ).then((value) => {
-        if (value) {
-          window.location.href = "log-in.php";
-        } else {
-          window.location.href = "log-in.php";
-        }
-      });
-    </script>
-    <?php
-    } 
-
-  } 
-?>
+    
   </body>
 </html>
