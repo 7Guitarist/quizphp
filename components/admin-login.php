@@ -1,6 +1,26 @@
 <?php
 include 'header.php'; 
 include 'connection.php';
+
+if(isset($_POST['login'])) :
+
+  $count = 0;
+  $user = mysqli_real_escape_string($con,$_POST['username']);
+  $pass =  mysqli_real_escape_string($con,$_POST['password']);
+
+  $res = mysqli_query($con, "select * from admin where username='$user' && password='$pass'");
+  $count = mysqli_num_rows($res);
+
+  if ($count == 0) : ?>
+  <script defer>
+    alert("invalid");
+  </script>
+  <?php else: ?>
+    <script defer>
+      window.location.href = "dashboard.php";
+    </script>
+  <?php endif; ?>
+<?php endif; ?>
 ?>
     <div class="sign-up-wrapper">
       <div class="sign-up-main">
@@ -14,13 +34,10 @@ include 'connection.php';
                 type="text"
                 required
                 id="username"
-                name="username"
+                name="username"  placeholder=" "
               />
               <label for="username">username</label>
-              <span class="err" id="user-err"
-                ><span class="fa-solid fa-triangle-exclamation"> </span>Does Not
-                Match! Invalid Username or Password</span
-              >
+
             </div>
             <div class="signup-container">
               <input
@@ -28,12 +45,10 @@ include 'connection.php';
                 id="password"
                 name="password"
                 placeholder=" "
+                required
               />
               <label for="password">Password</label>
-              <span class="err" id="pass-err"
-                ><span class="fa-solid fa-triangle-exclamation"> </span>Does Not
-                Match! Invalid Password</span
-              >
+
             </div>
             <div class="signup-btn">
               <input
@@ -50,9 +65,5 @@ include 'connection.php';
         </div>
       </div>
     </div>
-
-    <?php
-   
-    ?>
   </body>
 </html>
