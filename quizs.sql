@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2023 at 04:31 AM
+-- Generation Time: Nov 17, 2023 at 01:40 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -60,9 +60,72 @@ CREATE TABLE `quiz_desc` (
 --
 
 INSERT INTO `quiz_desc` (`quiz_id`, `quiz_name`, `quiz_picture`, `quiz_title`, `quiz_text`, `quiz_mins`) VALUES
-(2, 'SQL', 'images/bb644451b484b56472f96426d1b1caf8bridge.jpg', 'SQL Quiz', 'Challenge your Database Skills with this MySQL Quiz', '20'),
-(3, 'PHP', 'images/bb9df30b466700291cfc03f16fd704bcpexels-josh-hild-2422497.jpg', 'PHP Quiz', 'Learn doing php coding haystack sandbox...', '30'),
-(5, 'InnoDB', 'images/5e9a87d9408940b4a889ec91d18a4d88pexels-josh-hild-2422497.jpg', 'InnoDB Quiz', 'Empower yourself with InnoDB Quiz and have a great coffee!', '33');
+(2, 'SQL', 'images/ed759b116308ae222b6994ea766c6b6cmysqql.jpg', 'SQL Quiz', 'Challenge your Database Skills with this MySQL Quiz', '60'),
+(3, 'PHP', 'images/7b45608f1afa8dd32b05c6680be727e8php-logo.jpg', 'PHP Quizzes', 'Learn doing php coding haystack sandbox...', '60');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_question`
+--
+
+CREATE TABLE `quiz_question` (
+  `id` int(11) NOT NULL,
+  `question_no` varchar(5) NOT NULL,
+  `question_text` varchar(255) NOT NULL,
+  `optiona` varchar(255) NOT NULL,
+  `optionb` varchar(255) NOT NULL,
+  `optionc` varchar(255) NOT NULL,
+  `optiond` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `quiz_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quiz_question`
+--
+
+INSERT INTO `quiz_question` (`id`, `question_no`, `question_text`, `optiona`, `optionb`, `optionc`, `optiond`, `answer`, `quiz_name`) VALUES
+(7, '1', 'What does SQL stand for?', 'Structured Question Language', 'Structured Query Language', 'Sequential Query Language', 'Simple Query Language', 'Structured Query Language', 'SQL'),
+(8, '2', 'Which command is used to create a new database in MySQL?', 'ADD DATABASE', 'CREATE DB', 'MAKE DATABASE', 'CREATE DATABASE', 'CREATE DATABASE', 'SQL'),
+(9, '3', 'Which clause is used to filter records in a SELECT statement?', 'ORDER BY', 'WHERE', 'GROUP BY', 'HAVING', 'WHERE', 'SQL'),
+(10, '4', 'What is the default port number for MySQL?', '3306', '5432', '8080', '404', '3306', 'SQL'),
+(11, '5', 'Which statement is used to delete a table in MySQL?', 'DROP TABLE', 'DELETE TABLE', 'REMOVE TABLE', 'ERASE TABLE', 'DROP TABLE', 'SQL'),
+(12, '6', 'Which keyword is used to retrieve unique records in a SELECT query?', 'UNIQUE', 'DISTINCT', 'DIFFERENT', 'UNIQUEVALUES', 'DISTINCT', 'SQL'),
+(13, '7', 'What is the purpose of the MySQL function COUNT()?', 'Calculates the average value of a column', 'Counts the number of rows in a table', 'Retrieves the maximum value from a column', 'Returns the sum of values in a column', 'Counts the number of rows in a table', 'SQL'),
+(14, '8', 'Which data type would you use to store a date and time in MySQL?', 'DATE', 'DATETIME', 'TIMESTAMP', 'TIME', 'DATETIME', 'SQL'),
+(15, '9', 'What does the MySQL command UPDATE do?', 'Adds new records to a table', 'Deletes records from a table', 'Modifies existing records in a table', 'Retrieves data from a table', 'Modifies existing records in a table', 'SQL'),
+(16, '10', 'Which clause is used to sort the result set in ascending or descending order?', 'ARRANGE BY', 'GROUP BY', 'ORDER BY', 'SORT BY', 'ORDER BY', 'SQL'),
+(17, '11', 'What is the function of the MySQL JOIN clause?', 'Combines rows from different tables based on a related column', 'Deletes rows from a table', 'Adds new columns to a table', 'Updates existing records in a table', 'Combines rows from different tables based on a related column', 'SQL'),
+(18, '12', 'What is the purpose of the MySQL INSERT INTO statement?', 'Modifies existing records in a table', 'Adds new records to a table', 'Deletes records from a table', 'Retrieves specific data from a table', 'Adds new records to a table', 'SQL'),
+(19, '13', 'What is the role of the MySQL GROUP BY clause?', 'Sorts the result set in ascending order', 'Filters records based on specified criteria', 'Groups rows that have the same values into summary rows', 'Deletes duplicate rows from a table', 'Groups rows that have the same values into summary rows', 'SQL'),
+(20, '14', 'Which MySQL command is used to display all databases?', 'LIST DATABASES', 'SHOW DATABASES', 'DISPLAY DATABASES', 'SELECT DATABASES', 'SHOW DATABASES', 'SQL'),
+(21, '15', 'What is the purpose of the MySQL LIMIT clause?', 'Adds a limit to the number of tables displayed', 'Restricts the number of records returned in a query', 'Limits the number of columns in a table', 'Sets a maximum size for the database', 'Restricts the number of records returned in a query', 'SQL'),
+(22, '16', 'Which statement is used to change the name of a table in MySQL?', 'MODIFY TABLE', 'RENAME TABLE', 'CHANGE TABLE NAME', 'ALTER TABLE NAME', 'RENAME TABLE', 'SQL'),
+(23, '17', 'In MySQL, what is the purpose of the UNION operator?', 'Combines two or more SELECT statements and returns distinct rows', 'Concatenates strings in a column', 'Performs division between two values', 'Joins tables based on specified conditions', 'Combines two or more SELECT statements and returns distinct rows', 'SQL'),
+(24, '18', 'What is the purpose of the SQL JOIN clause in a database query?', 'Combining multiple tables based on a specified condition', 'Filtering rows based on a specific criteria', 'Rearranging the order of rows in a table', 'Grouping rows into subsets based on values', 'Combining multiple tables based on a specified condition', 'SQL'),
+(25, '19', 'What does the SQL HAVING clause primarily function as?', 'Filters rows before grouping in a query', 'Sorts rows in ascending or descending order', 'Filters grouped rows based on specified conditions', 'Restricts the number of rows returned in a query', 'Filters grouped rows based on specified conditions', 'SQL'),
+(26, '20', 'In SQL, which statement is used to add a new column to an existing table?', 'INSERT COLUMN', 'MODIFY COLUMN', 'ADD COLUMN', 'APPEND COLUMN', 'ADD COLUMN', 'SQL'),
+(27, '1', 'What does PHP stand for?', 'Personal Home Page', 'Preprocessed Hypertext Page', 'PHP: Hypertext Preprocessor', 'Private Hosting Platform', 'PHP: Hypertext Preprocessor', 'PHP'),
+(28, '2', 'Which symbol is used to denote the start of a PHP code block?', '<>', '{}', '()', '<?php ?>', '<?php ?>', 'PHP'),
+(29, '3', 'Which function is used to output text in PHP?', 'print()', 'display()', 'echo()', 'printf()', 'echo()', 'PHP'),
+(30, '4', 'Which of the following is used to comment a single line in PHP?', '//', '<!-- -->', '///--', ':', '//', 'PHP'),
+(31, '5', 'What is the correct way to start a session in PHP?', 'start_session();', 'session_start();', 'init_session();', 'begin_session();', 'session_start();', 'PHP'),
+(32, '6', 'What is the PHP operator used for concatenation?', '.', '+', '&', ':', '.', 'PHP'),
+(33, '7', 'What does the $_GET superglobal variable do in PHP?', 'Retrieves variables from the server', 'Retrieves variables from a form submitted with the GET method', 'Stores cookies', 'Stores session variables', 'Retrieves variables from a form submitted with the GET method', 'PHP'),
+(34, '8', 'Which PHP function is used to establish a database connection?', 'connect_db()', 'db_open()', 'create_connection()', 'mysqli_connect()', 'mysqli_connect()', 'PHP'),
+(35, '9', 'What is the default file extension for PHP files?', '.html', '.php', '.xls', '.ph', '.php', 'PHP'),
+(36, '10', 'What is the purpose of the if statement in PHP?', 'To execute code based on whether a condition is true or false', 'To repeat a block of code a specified number of times', 'To create a loop that always executes at least once', 'To check the data type of a variable', 'To execute code based on whether a condition is true or false', 'PHP'),
+(37, '11', 'What is the primary function of the switch statement in PHP?', 'To execute code based on multiple conditions', 'To terminate the execution of a loop', 'To compare two variables', 'To define a default value for a variable', 'To execute code based on multiple conditions', 'PHP'),
+(38, '12', 'In PHP, which statement is used to exit the current loop iteration and continue with the next iteration?', 'break', 'skip', 'stop', 'continue', 'continue', 'PHP'),
+(39, '13', 'What is the purpose of the else if statement in PHP?', 'To terminate the execution of the program', 'To define an alternate condition if the initial condition is false', 'To concatenate strings', 'To declare a new variable', 'To define an alternate condition if the initial condition is false', 'PHP'),
+(40, '14', 'Which PHP comparison operator checks if both the value and the type are equal?', '==', '===', '=!', '!=', '===', 'PHP'),
+(41, '15', 'In PHP, the ?: is known as:', 'The ternary operator', 'The null coalescing operator', 'The spaceship operator', 'The increment operator', 'The ternary operator', 'PHP'),
+(42, '16', 'What is the function of the isset() function in PHP?', 'Checks if a variable is empty', 'Checks if a variable is set and is not NULL', 'Checks if a variable is numeric', 'Converts a string to lowercase', 'Checks if a variable is set and is not NULL', 'PHP'),
+(43, '17', 'What does the default keyword represent in a switch statement?', 'Executes when none of the cases match the given value', 'Indicates the default data type for a variable', 'Stops the execution of the switch statement', 'Defines the starting point of the switch statement', 'Executes when none of the cases match the given value', 'PHP'),
+(44, '18', 'Which operator in PHP is used for exponentiation?', '^', '**', '^^', '//', '**', 'PHP'),
+(45, '19', 'What will be the result of the expression ($x == 5) && ($y == 10) if $x is 5 and $y is 10?', 'True', 'False', 'Error', 'Null', 'True', 'PHP'),
+(46, '20', 'In PHP, what does the !== operator check for?', 'Equality in value and type', 'Inequality in value and type', 'Inequality in value but not in type', 'Equality in value but not in type', 'Equality in value and type', 'PHP');
 
 -- --------------------------------------------------------
 
@@ -115,6 +178,12 @@ ALTER TABLE `quiz_desc`
   ADD PRIMARY KEY (`quiz_id`);
 
 --
+-- Indexes for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -134,7 +203,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `quiz_desc`
 --
 ALTER TABLE `quiz_desc`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `quiz_question`
+--
+ALTER TABLE `quiz_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user`
