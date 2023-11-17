@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'header.php'; 
 include 'connection.php';
 ?>
@@ -62,7 +63,7 @@ include 'connection.php';
     if(isset($_POST["login"])) {
 
 
-      // TODO: 
+
         $enteredPassword = $_POST["password"];
         $username = $_POST["username"];
 
@@ -74,7 +75,6 @@ include 'connection.php';
 
             // Verify the entered password against the hashed password
             if (password_verify($enteredPassword, $hashedPassword)) {
-               session_start();
                 $_SESSION['username'] = $username;
                 $_SESSION['firstname'] = $row['firstname'];
                 $_SESSION['lastname'] = $row['lastname'];

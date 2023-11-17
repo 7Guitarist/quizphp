@@ -77,8 +77,8 @@ include 'connection.php';
             <td><?php echo $row["quiz_text"] ?></td>
             <td><?php echo $row["quiz_mins"] ?></td>
             <td><div class="action">
-              <a href="#" class="edit">Edit</a>
-              <a href="#" class="delete">Delete</a>
+              <a href="edit-quiz.php?id=<?php echo $row['quiz_id'] ?>" class="edit">Edit</a>
+              <a href="delete.php?id=<?php echo $row['quiz_id'] ?>" class="delete">Delete</a>
             </div></td>
           </tr>
 
@@ -102,7 +102,13 @@ include 'connection.php';
     move_uploaded_file($_FILES['qimage']['tmp_name'],$destination);
 
     mysqli_query($con,"insert into quiz_desc values(NULL,'$_POST[qname]','$destination_db', '$_POST[qtitle]','$_POST[qtext]','$_POST[qnum]')") or die(mysql_error($con));
-  
+    ?>
+    <script>
+      alert("successfully added");
+      window.location.href =  window.location.href
+    </script>
+    
+    <?php
     // echo "<pre>";
     // print_r($_FILES['qimage']);
     // echo "</pre>";

@@ -1061,6 +1061,10 @@ body.user {
 .t-head {
 } */
 
+.add-question .quiz-list {
+  padding: 0 20px 40px;
+}
+
 .add-quiz-item {
   background: #1c242d;
 }
@@ -1131,3 +1135,23 @@ body.user {
   background-color: #222830; /* Odd rows color */
 }
 /* #endregion add quiz */
+
+/* #region edit quiz */
+.current-image {
+  margin-bottom: 16px;
+}
+.add-quiz-container.low {
+  margin-bottom: 8px;
+}
+.current-image img {
+  max-width: 100px;
+  max-height: 50px;
+  object-fit: cover;
+}
+
+.current-image p {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  margin-bottom: 5px;
+}
+/* #endregion edit quiz */
