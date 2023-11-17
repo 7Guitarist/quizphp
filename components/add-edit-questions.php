@@ -82,7 +82,7 @@ if ($id !== null) {
         </tr>
       </thead>
       <tbody>
-        <?php $res=mysqli_query($con,"select * from quiz_question where quiz_name='$quiz_name' order by question_no asc");?>
+        <?php $res=mysqli_query($con,"select * from quiz_question where quiz_name='$quiz_name' order by  CAST(question_no AS UNSIGNED) asc");?>
         <?php while($row=mysqli_fetch_array($res)){?>
           <tr>
             <td><?php echo htmlspecialchars($row['id']); ?></td>
@@ -140,7 +140,7 @@ if ($id !== null) {
 
     ?>
     <script>
-      alert("successfully added questions");
+      // alert("successfully added questions");
       window.location.href =  window.location.href
     </script>
     <?php

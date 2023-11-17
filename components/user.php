@@ -9,7 +9,7 @@ include 'connection.php';
         
         <div class="card">
           <div class="card-img">
-            <a href="/">
+            <a href="/" onclick="set_quiz_type_session(this.value);">
               <img src="../<?php echo $row["quiz_picture"] ?>" alt="SQL Quiz" />
             </a>
           </div>
@@ -22,7 +22,7 @@ include 'connection.php';
           </div>
         </div>
     <?php  } ?>
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-img">
           <a href="/">
             <img src="../images/mysqql.jpg" alt="SQL Quiz" />
@@ -35,9 +35,24 @@ include 'connection.php';
           </div>
           <p>Challenge your Database Skills with this MySQL Quiz</p>
         </div>
-      </div>
+      </div> -->
 
     </div>
     
   </body>
 </html>
+
+<script defer>
+  function set_quiz_type_session(quizcategory){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+      if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        window.location = "quiztaking.php";
+      }
+    };
+
+    xmlhttp.open("GET","forajax/set_quiz_type_session.php?quiz_category="+ quizcategory, true);
+    xmlhttp.send(null);
+    
+  }
+</script>

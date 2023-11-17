@@ -906,6 +906,7 @@ body.admin-login .header-right {
 .user-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  grid-template-columns: repeat(3, 370px);
   gap: 32px;
 }
 .card {
