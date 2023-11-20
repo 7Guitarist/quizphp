@@ -788,7 +788,8 @@ body.admin-login .header-right {
 }
 
 .sign-up-main .btn-submit,
-.admin-add-quiz .btn-submit {
+.admin-add-quiz .btn-submit,
+.take-quiz-btn .btn-submit {
   position: relative;
   color: #fff;
   cursor: pointer;
@@ -1156,3 +1157,133 @@ body.user {
   margin-bottom: 5px;
 }
 /* #endregion edit quiz */
+
+/* #region question page */
+.take-quiz {
+  background: #0d1224;
+}
+.question-no {
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  padding: 20px 0;
+}
+
+.question-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  margin-top: 45px;
+  color: #fff;
+}
+
+/* Wrap input and label within a label element */
+.radio-group {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.radio-group label {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+  padding: 20px 60px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.radio-group label:hover {
+  border-color: var(--clr-primary);
+}
+
+.radio-group label:hover input[type="radio"] {
+  animation: scaleAnimation 0.3s forwards;
+  border-color: var(--clr-primary);
+}
+
+.radio-group label .label-text {
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+}
+
+.radio-group label:hover .label-text {
+  color: var(--clr-primary);
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+input[type="radio"]:checked {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  outline: 2px solid var(--clr-primary) !important;
+  outline-offset: -4px;
+}
+
+input[type="radio"]:checked + .label-text {
+  color: #fff;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.radio-group input[type="radio"]:checked + .label-text::before {
+  inset: 0;
+  content: "";
+  background: var(--clr-primary);
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.radio-group .label-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: url(images/selected-blank.png) transparent top right no-repeat;
+  z-index: 1;
+  pointer-events: none;
+}
+.radio-group input[type="radio"]:checked + .label-text::after {
+  opacity: 1;
+}
+
+.radio-group .label-wrapper {
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.take-quiz-btn .btn-submit {
+  max-width: 300px;
+  margin: 40px auto 140px;
+}
+
+.take-quiz-btn .btn-submit:hover {
+  background-color: var(--clr-secondary);
+}
+/* #endregion question page */

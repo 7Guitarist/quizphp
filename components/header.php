@@ -31,7 +31,7 @@ if (basename($_SERVER['PHP_SELF'], '.php') == 'index') {
     <div class="header">
       <div class="header-inner">
         <div class="header-left">
-          <a href="../index.php" class="header-logo">
+          <a href="<?php echo (isset($page_path) ? $page_path : ''); ?>index.php" class="header-logo">
             <div class="logo">Q</div>
             <h2 class="logo-name">QuizGame</h2>
           </a>

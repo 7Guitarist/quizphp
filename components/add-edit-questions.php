@@ -7,8 +7,6 @@ $quiz_name = '';
 $id = isset($_GET["id"]) ? $_GET["id"] : null;
 
 if ($id !== null) {
-    // Rest of your code that uses $id goes here
-    // ...
     $id=$_GET["id"];
 
  $res=mysqli_query($con,"select * from quiz_desc where quiz_id = $id");
@@ -82,7 +80,7 @@ if ($id !== null) {
         </tr>
       </thead>
       <tbody>
-        <?php $res=mysqli_query($con,"select * from quiz_question where quiz_name='$quiz_name' order by  CAST(question_no AS UNSIGNED) asc");?>
+        <?php $res=mysqli_query($con,"select * from quiz_question where quiz_name='$quiz_name' order by question_no asc");?>
         <?php while($row=mysqli_fetch_array($res)){?>
           <tr>
             <td><?php echo htmlspecialchars($row['id']); ?></td>
@@ -128,7 +126,7 @@ if ($id !== null) {
     if($count == 0){
 
     } else {
-        // handle when the id of the question is deleted from example 1 2 3,  1 3 4 5 prevent this from happening
+        // handle when the id of the question is deleted from table example 1 2 3,  1 3 4 5 prevent this from happening
         while($row=mysqli_fetch_array($res)) {
             $loop += 1;
             mysqli_query($con, "update quiz_question set question_no='$loop' where id = $row[id]");
@@ -141,7 +139,7 @@ if ($id !== null) {
     ?>
     <script>
       // alert("successfully added questions");
-      window.location.href =  window.location.href
+      window.location.href =  window.location.href // redirect to the same page
     </script>
     <?php
 
