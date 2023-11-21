@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include_once 'connection.php';
 ?>
 <?php  include 'admin-header.php';
 ?>
@@ -66,7 +66,7 @@ include 'connection.php';
         </tr>
       </thead>
       <tbody>
-        <?php $res=mysqli_query($con,"select * from quiz_desc");
+        <?php 
          $res = mysqli_query($con,"select * from quiz_desc"); ?>
         <?php while($row=mysqli_fetch_array($res)){?>
           <tr>

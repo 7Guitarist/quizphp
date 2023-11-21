@@ -17,7 +17,11 @@ if ($quiz_name !== null) {
     
 
 ?>
-
+<div class="user-intro">
+      <div class="ui-wrapper">
+        <h2 class="titles">"Show who you are!" with this <?php echo $quiz_name ?> Quiz</h2>
+      </div>
+    </div>
     <div class="quiz-wrapper">
             <form action="" method="POST">
                <?php    $res=mysqli_query($con,"select * from quiz_question where quiz_name = '$quiz_name'") or die(mysqli_error($con));?>
@@ -86,18 +90,26 @@ if ($quiz_name !== null) {
         if(isset($_POST["choice$count"])) { // If the user choose an answer do this
             if($correctAnswers[$i] === $_POST["choice$count"]) {
                 $score++;
-                echo "Question $count: Correct<br>";
+                // echo "Question $count: Correct<br>";
             } else {
-                echo "Question $count: Wrong<br>";
-                echo "Correct Answer: {$correctAnswers[$i]} User Selected Answer: {$_POST["choice$count"]}<br>";
+                // echo "Question $count: Wrong<br>";
+                // echo "Correct Answer: {$correctAnswers[$i]} User Selected Answer: {$_POST["choice$count"]}<br>";
             }
         } else { // Handle the case where the user didn't choose an answer
-            echo "Question $count: No answer provided<br>";
+            // echo "Question $count: No answer provided<br>";
             
         }
+       
     }
-    echo "Total Score: $score<br>";
+    // echo "Total Score: $score<br>";
+      $_SESSION["score"] = $score;
+   
+    $_SESSION["question_no"] = count($correctAnswers);
+    ?>
+    <script>window.location.href = "quiz-score.php"</script>
+    <?php 
 }
+
 
 ?>
 

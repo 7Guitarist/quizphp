@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include_once 'connection.php';
 
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -25,6 +25,7 @@ if (isset($_SESSION['username'])) {
       src="https://kit.fontawesome.com/baefa0e7e0.js"
       crossorigin="anonymous"
     ></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="<?php echo basename($_SERVER['PHP_SELF'], '.php'); ?>">
  
@@ -44,8 +45,8 @@ if (isset($_SESSION['username'])) {
                   class="profile-image"
                 />
                 <div class="dropdown" id="dropdown">
-                  <a href="settings.php"
-                    ><i class="fas fa-cogs"></i> Settings</a
+                  <a href="profiles.php"
+                    ><i class="fas fa-cogs"></i> Edit Profile</a
                   >
                   <a href="log-in.php"
                     ><i class="fas fa-sign-out-alt"></i> Logout</a
@@ -57,9 +58,4 @@ if (isset($_SESSION['username'])) {
         </div>
       </div>
     </div>
-    <div class="user-intro">
-      <div class="ui-wrapper">
-        <p>Welcome,</p>
-        <h2><?php echo $firstname . ' ' . $lastname; ?></h2>
-      </div>
-    </div>
+

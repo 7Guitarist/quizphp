@@ -5,6 +5,12 @@ include 'connection.php';
         $res=mysqli_query($con,"select * from quiz_desc");
 
 ?>
+    <div class="user-intro">
+      <div class="ui-wrapper">
+        <p>Welcome,</p>
+        <h2><?php echo $firstname . ' ' . $lastname; ?></h2>
+      </div>
+    </div>
     <div class="user-wrapper">
       <?php while($row=mysqli_fetch_array($res)){?>
         <div class="card">
