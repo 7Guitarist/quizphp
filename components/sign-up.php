@@ -32,7 +32,7 @@ include 'connection.php';
         </script>
     <?php
     } else { 
-       mysqli_query($con,"insert into user values(NULL,'$fname','$lname','$mname','$course','$year','$subject','$section','$address','$phone','$username','$hashedPassword')")
+       mysqli_query($con,"insert into user values(NULL,'$fname','$lname','$mname','$course','$year','$subject','$section','$address','$phone','$username','$hashedPassword',NULL)") or die(mysqli_error($con));
       ?>
     <script>
       document.addEventListener("DOMContentLoaded", function() {

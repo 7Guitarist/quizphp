@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2023 at 04:30 AM
+-- Generation Time: Nov 22, 2023 at 11:27 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -130,6 +130,28 @@ INSERT INTO `quiz_question` (`id`, `question_no`, `question_text`, `optiona`, `o
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `quiz_results`
+--
+
+CREATE TABLE `quiz_results` (
+  `id` int(5) NOT NULL,
+  `username` varchar(55) NOT NULL,
+  `quiz_name` varchar(55) NOT NULL,
+  `total_question` varchar(55) NOT NULL,
+  `correct_answer` varchar(55) NOT NULL,
+  `quiz_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `quiz_results`
+--
+
+INSERT INTO `quiz_results` (`id`, `username`, `quiz_name`, `total_question`, `correct_answer`, `quiz_date`) VALUES
+(1, 'Peter', 'SQL', '20', '17', '2023-11-20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -145,21 +167,23 @@ CREATE TABLE `user` (
   `address` varchar(55) NOT NULL,
   `contactnumber` varchar(55) NOT NULL,
   `username` varchar(55) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `user_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `middlename`, `course`, `yearlevel`, `subject`, `section`, `address`, `contactnumber`, `username`, `password`) VALUES
-(1, 'Efraim', 'Gondraneos', 'Cequeña', 'BSIT', '3', 'Integrative Programming', '303I', 'Quezon City', '0994655879', 'user21', '$2y$10$WRpemWCoPcv15eSsHy9YiecwvOiGTvnbOPgDVlVqZnSF5KpcFWSAC'),
-(2, 'wesa', 'wesa', 'wesa', 'BSIT', '2', 'we', 'we', 'we', '23', 'admin', '$2y$10$9afjssSCuC/rx81Pf8QcxOgrI2y3de2Etp.6xkXRO1eteLOtw32FO'),
-(3, 'John', 'Doe', 'Smith', 'BSCpE', '4', 'SAP', '401I', 'Mandaluyong', '12345678901', 'john', '$2y$10$z5Yb7zz3HT1RMNsVRTqKM.igsy.P/Ue9BnZLykgkLL2mbwzB/pVxy'),
-(4, 'Jane', 'Doe', 'Smith', 'BSCpE', '2', 'Elective 2', '202I', 'Mandaluyong', '0958 669 8789', 'jane', '$2y$10$/lbw91MkmSZ62e2R58e16uHhIDubjSHQF4Ps.615tNouqnGIrseWS'),
-(5, 'Joseph', 'Israel', 'Efraim', 'BSCpE', '1', 'Integrative Programming', '303I', 'Mandaluyong', '0945 587 6542', 'joseph', '$2y$10$tr40SUB3V5HUudGjoHW6UeR3WHyzsgXx80lOMRMbKeoHYWDDMNcLK'),
-(6, 'asdasdsada232@#', 'adsasdsa', 'asdasdasd', 'BSEcE', '3', 'asdasdas', 'asddasdas', 'asddasd', '2323 232 3232', 'awe', '$2y$10$I7X1BjYPfhHIN5Kw.Yh4sO8c05LXojSSzcN76Ck5MehE6lEuxrdQ2'),
-(7, 'Samantha', 'Pena', 'Ojeda', 'BSCpE', '2', 'Integ', '303I', 'Mandaluyong', '0945 878 7565', 'sam21', '$2y$10$CDUAM7KxMKo/pItPZ1eYZ.gd8UHhZxR1GrocnE7graREut39VJslW');
+INSERT INTO `user` (`id`, `firstname`, `lastname`, `middlename`, `course`, `yearlevel`, `subject`, `section`, `address`, `contactnumber`, `username`, `password`, `user_image`) VALUES
+(1, 'Efraim', 'Gondraneos', 'Cequeña', 'BSIT', '3', 'Integrative Programming', '303I', 'Quezon City', '0994655879', 'user21', '$2y$10$WRpemWCoPcv15eSsHy9YiecwvOiGTvnbOPgDVlVqZnSF5KpcFWSAC', ''),
+(2, 'wesa', 'wesa', 'wesa', 'BSIT', '2', 'we', 'we', 'we', '23', 'admin', '$2y$10$9afjssSCuC/rx81Pf8QcxOgrI2y3de2Etp.6xkXRO1eteLOtw32FO', ''),
+(3, 'John', 'Doe', 'Smith', 'BSCpE', '4', 'SAP', '401I', 'Mandaluyong', '12345678901', 'john', '$2y$10$z5Yb7zz3HT1RMNsVRTqKM.igsy.P/Ue9BnZLykgkLL2mbwzB/pVxy', ''),
+(4, 'Jane', 'Doe', 'Smith', 'BSCpE', '2', 'Elective 2', '202I', 'Mandaluyong', '0958 669 8789', 'jane', '$2y$10$/lbw91MkmSZ62e2R58e16uHhIDubjSHQF4Ps.615tNouqnGIrseWS', ''),
+(5, 'Joseph', 'Israel', 'Efraim', 'BSCpE', '1', 'Integrative Programming', '303I', 'Mandaluyong', '0945 587 6542', 'joseph', '$2y$10$tr40SUB3V5HUudGjoHW6UeR3WHyzsgXx80lOMRMbKeoHYWDDMNcLK', ''),
+(6, 'asdasdsada232@#', 'adsasdsa', 'asdasdasd', 'BSEcE', '3', 'asdasdas', 'asddasdas', 'asddasd', '2323 232 3232', 'awe', '$2y$10$I7X1BjYPfhHIN5Kw.Yh4sO8c05LXojSSzcN76Ck5MehE6lEuxrdQ2', ''),
+(7, 'Samantha', 'Pena', 'Ojeda', 'BSCpE', '2', 'Integ', '303I', 'Mandaluyong', '0945 878 7565', 'sam21', '$2y$10$CDUAM7KxMKo/pItPZ1eYZ.gd8UHhZxR1GrocnE7graREut39VJslW', ''),
+(8, 'Kevin', 'Gallaron', 'Arabit', 'BSIT', '1', 'Autocad', '101I', 'Manila', '0945 686 5987', 'kevin21', '$2y$10$S3gTqFeH1nHay1TqohT2yuk857hfnIsDzFJUByOk.LYCmISWOgFsm', 'images/08044d8c2d65af3fc5f68526708e77e9kevin.jpg');
 
 --
 -- Indexes for dumped tables
@@ -181,6 +205,12 @@ ALTER TABLE `quiz_desc`
 -- Indexes for table `quiz_question`
 --
 ALTER TABLE `quiz_question`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quiz_results`
+--
+ALTER TABLE `quiz_results`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -212,10 +242,16 @@ ALTER TABLE `quiz_question`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
+-- AUTO_INCREMENT for table `quiz_results`
+--
+ALTER TABLE `quiz_results`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

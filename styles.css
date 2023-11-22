@@ -847,7 +847,8 @@ body.admin-login .header-right {
   color: var(--clr-secondary);
 }
 
-.sign-up-main .signup-container .err {
+.sign-up-main .signup-container .err,
+.add-quiz-container .err {
   color: red;
   position: absolute;
   bottom: -18px;
@@ -856,7 +857,8 @@ body.admin-login .header-right {
   display: none;
 }
 
-.sign-up-main .signup-container .err.show {
+.sign-up-main .signup-container .err.show,
+.add-quiz-container .err.show {
   display: block;
   text-align: center;
 }
@@ -1355,8 +1357,10 @@ input[type="radio"]:checked + .label-text {
 }
 
 .profile-img img {
-  max-width: 150px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile-wrapper {
@@ -1555,3 +1559,47 @@ html {
 }
 
 /* #endregion Wikipedia */
+/* #region Edit Profile */
+.add-quiz-container select {
+  background: #000;
+  color: rgb(255, 255, 255 /0.5);
+}
+.add-quiz-container select:focus,
+.add-quiz-container select:focus-within {
+  border-color: var(--clr-primary);
+  color: var(--clr-primary);
+}
+.add-quiz-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.current-image img {
+  color: #fff;
+}
+
+.edit-profile .header-inner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.edit-profile .admin {
+  grid-template-columns: 1fr;
+}
+
+.edit-profile .admin-panel,
+.admin-add-quiz {
+  padding-top: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  margin: 40px auto;
+}
+/* #endregion Edit Profile */

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include 'components/connection.php';
 $username = $_SESSION['username'];
 
 
@@ -23,14 +23,29 @@ $userProfilePicture = $row['user_image'];
 ?>
 
 <head>
-  <link rel="stylesheet" href="../styles.css">
-  <script defer src="../main.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="main.js"></script>
       <script
       src="https://kit.fontawesome.com/baefa0e7e0.js"
       crossorigin="anonymous"
     ></script>
   <style>
+    .sample .header-inner{
+      opacity: 0;
+      pointer-events:none;
+    }
 
+    .sample .admin {
+          grid-template-columns: 1fr;
+    }
+
+   .sample  .admin-panel, .admin-add-quiz {
+          padding-top: 40px;
+          max-width: 1280px;
+          margin: 0 auto;
+          width: 100%;
+          margin: 40px auto;
+      }
   </style>  
 </head>
   <body class="<?php echo basename($_SERVER['PHP_SELF'], '.php'); ?>">
@@ -241,11 +256,11 @@ if (isset($_POST['submit'])) {
             lastname = '$lname',
             middlename = '$mname',
             course = '$course',
-            yearlevel = '$year',
-            subject = '$subject',
-            section = '$section',
-            address = '$address',
-            contactnumber = '$phone',
+            yearlevel = '$year'
+            subject = '$subject'
+            section = '$section'
+            address = '$address'
+            contactnumber = '$phone'
             user_image = '$destination_db'
             WHERE id = $userId") or die(mysqli_error($con));
     } else {
@@ -255,11 +270,11 @@ if (isset($_POST['submit'])) {
             lastname = '$lname',
             middlename = '$mname',
             course = '$course',
-            yearlevel = '$year',
-            subject = '$subject',
-            section = '$section',
-            address = '$address',
-            contactnumber = '$phone',
+            yearlevel = '$year'
+            subject = '$subject'
+            section = '$section'
+            address = '$address'
+            contactnumber = '$phone'
             user_image = '$destination_db'
             WHERE id = $userId") or die(mysqli_error($con));
     }

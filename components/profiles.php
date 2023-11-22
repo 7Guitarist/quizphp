@@ -9,6 +9,12 @@ $userSubject = $row['subject'];
 $userSection = $row['section'];
 $userAddress = $row['address'];
 $userContactNumber = $row['contactnumber'];
+$userProfilePicture = $row['user_image'];
+
+$profile_path = '';
+if(empty($userProfilePicture)) {
+    $profile_path = 'images/';
+}
 
 ?>
 
@@ -16,14 +22,14 @@ $userContactNumber = $row['contactnumber'];
     <div class="profile-container">
         <div class="profile-left">
             <div class="profile-img">
-                <img src="../images/efraim.jpg" alt="Profile">
+                <img src="../<?php echo $profile_path ?><?php echo (!empty($userProfilePicture) ? $userProfilePicture : 'anonymous.jpg'); ?>" alt="Profile">
             </div>
         </div>
         <div class="profile-right">
             <div class="u-name">
                 <p class="pname"><?php echo $firstname . " " . $lastname ?></p>
                 <div class="site-btn-container">
-                    <a href="#" class="site-btn">Edit Profile</a>
+                    <a href="edit-profile.php?id=<?php echo $userId ?>" class="site-btn">Edit Profile</a>
                 </div>
             </div>
             <div class="profile-info">
