@@ -20,6 +20,7 @@ if ($quiz_name !== null) {
 <div class="user-intro">
       <div class="ui-wrapper">
         <h2 class="titles">"Show who you are!" with this <?php echo $quiz_name ?> Quiz</h2>
+        <?php // echo count($correctAnswers) ?>
       </div>
     </div>
     <div class="quiz-wrapper">
@@ -100,11 +101,23 @@ if ($quiz_name !== null) {
             
         }
        
-    }
+    } // end of loop
     // echo "Total Score: $score<br>";
       $_SESSION["score"] = $score;
    
     $_SESSION["question_no"] = count($correctAnswers);
+    $total_questions = count($correctAnswers);
+
+
+    mysqli_query($con,"insert into quiz_results values(NULL,'$username','$quiz_name', '$total_questions','$score',CURDATE())") or die(mysql_error($con));
+
+        // $result = mysqli_query($con, $query);
+
+        // if (!$result) {
+        //     die("Error: " . mysqli_error($con));
+        // }
+
+
     ?>
     <script>window.location.href = "quiz-score.php"</script>
     <?php 

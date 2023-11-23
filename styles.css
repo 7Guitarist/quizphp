@@ -1603,3 +1603,8 @@ html {
   margin: 40px auto;
 }
 /* #endregion Edit Profile */
+/* #region Dashboard */
+.dashboard .quiz-list {
+  padding: 0 20px 40px;
+}
+/* #endregion Dashboard */

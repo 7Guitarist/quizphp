@@ -58,7 +58,7 @@ if(empty($userProfilePicture)) {
         </tr>
       </thead>
       <tbody>
-        <?php $res = mysqli_query($con,"select * from quiz_results"); //  where username == username?> 
+        <?php $res = mysqli_query($con,"select * from quiz_results where username='$username'"); //  where username == username?> 
         <?php while($row=mysqli_fetch_array($res)){?>
           <tr>
             <td><?php echo $row['id'] ?></td>

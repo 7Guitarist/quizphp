@@ -20,6 +20,11 @@ $contactnumber = $row['contactnumber'];
 $userProfilePicture = $row['user_image'];
 
 
+$profile_path = '';
+if(empty($userProfilePicture)) {
+    $profile_path = 'images/';
+}
+
 ?>
 
 <head>
@@ -82,7 +87,8 @@ $userProfilePicture = $row['user_image'];
         <!--  -->
         <div class="current-image">
             <p>Current Profile Picture</p>
-           <img src="../<?php echo $userProfilePicture; ?>" alt="Current Profile Picture">
+           <!-- <img src="../<?php echo $userProfilePicture; ?>" alt="Current Profile Picture"> -->
+           <img src="../<?php echo $profile_path ?><?php echo (!empty($userProfilePicture) ? $userProfilePicture : 'anonymous.jpg'); ?>" alt="Profile">
        </div>
 
         <div class="add-quiz-container">

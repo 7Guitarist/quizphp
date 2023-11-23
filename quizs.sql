@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 22, 2023 at 11:27 AM
+-- Generation Time: Nov 23, 2023 at 05:48 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -147,7 +147,8 @@ CREATE TABLE `quiz_results` (
 --
 
 INSERT INTO `quiz_results` (`id`, `username`, `quiz_name`, `total_question`, `correct_answer`, `quiz_date`) VALUES
-(1, 'Peter', 'SQL', '20', '17', '2023-11-20');
+(1, 'Peter', 'SQL', '20', '17', '2023-11-20'),
+(2, 'kevin21', 'SQL', '20', '18', '2023-11-23');
 
 -- --------------------------------------------------------
 
@@ -245,7 +246,7 @@ ALTER TABLE `quiz_question`
 -- AUTO_INCREMENT for table `quiz_results`
 --
 ALTER TABLE `quiz_results`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

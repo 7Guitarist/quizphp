@@ -15,7 +15,7 @@ include 'connection.php';
       <?php while($row=mysqli_fetch_array($res)){?>
         <div class="card">
           <div class="card-img">
-            <a href="/">
+            <a href="take-quiz.php?quiz_name=<?php echo $row['quiz_name'] ?>">
               <img src="../<?php echo $row["quiz_picture"] ?>" alt="SQL Quiz" />
             </a>
           </div>

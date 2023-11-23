@@ -5,6 +5,9 @@ if (
     "user.php",
     "playground.php",
     "add-quiz.php",
+    "quiz-score.php",
+    "profiles.php",
+    "take-quiz.php",
   ].includes(window.location.pathname.split("/").pop())
 ) {
   // Profile Dropdown
