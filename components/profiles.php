@@ -30,6 +30,7 @@ if(empty($userProfilePicture)) {
                 <p class="pname"><?php echo $firstname . " " . $lastname ?></p>
                 <div class="site-btn-container">
                     <a href="edit-profile.php?id=<?php echo $userId ?>" class="site-btn">Edit Profile</a>
+                    <a href="user.php" class="site-btn">Take Quiz</a>
                 </div>
             </div>
             <div class="profile-info">
@@ -50,7 +51,7 @@ if(empty($userProfilePicture)) {
       <thead>
         <tr class="t-head">
             <th>ID</th>
-            <th>Username</th>
+            <th>Name</th>
             <th>Quiz Name</th>
             <th>Total Question</th>
             <th>Correct Answer</th>
@@ -58,7 +59,7 @@ if(empty($userProfilePicture)) {
         </tr>
       </thead>
       <tbody>
-        <?php $res = mysqli_query($con,"select * from quiz_results where username='$username'"); //  where username == username?> 
+        <?php $res = mysqli_query($con,"select * from quiz_results where username='$name'"); ?> 
         <?php while($row=mysqli_fetch_array($res)){?>
           <tr>
             <td><?php echo $row['id'] ?></td>

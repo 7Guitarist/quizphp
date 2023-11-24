@@ -61,7 +61,7 @@ if(isset($_POST['search'])) {
           </a>
           <div class="nav-search">
             <form action="" method="POST">
-              <button type="submit" name="search" class="h-btn">Submit
+              <button type="submit" name="search_topic" class="h-btn">Submit
                 <span class="fa-solid fa-magnifying-glass nav-search-btn"></span>
               </button>
               <input

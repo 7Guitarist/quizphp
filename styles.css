@@ -316,7 +316,8 @@ body {
 
   background: #000;
 }
-.header .h-btn {
+.header .h-btn,
+.nav-search .h-btn {
   font-size: 0;
   border: 0;
   background: transparent;
@@ -324,7 +325,8 @@ body {
   outline: 0;
 }
 
-.header .h-btn span {
+.header .h-btn span,
+.nav-search .h-btn span {
   font-size: 16px;
 }
 
@@ -1606,5 +1608,44 @@ html {
 /* #region Dashboard */
 .dashboard .quiz-list {
   padding: 0 20px 40px;
+}
+
+.aaq-text .aa-title.sub {
+  margin: 40px 0 10px;
+  font-size: 16px;
+}
+
+.dashboard .header-right,
+.add-quiz .header-right,
+.add-question .header-right,
+.add-edit-questions .header-right,
+.edit-question .header-right,
+.edit-quiz .header-right,
+.edit-user .header-right,
+.search-edit-delete-user .header-right {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dash-main {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px 0 0;
+  align-items: center;
+}
+
+.aa-title.q-res {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-edit-delete-user .action {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-user .admin {
+  grid-template-columns: 1fr;
+  /* margin: 20px 0; */
 }
 /* #endregion Dashboard */

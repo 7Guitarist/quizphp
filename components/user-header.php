@@ -6,9 +6,18 @@ if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $firstname = $_SESSION['firstname'];
     $lastname = $_SESSION['lastname'];
+    $name = $firstname . " " . $lastname;
+    $profile_image = $_SESSION['profile'];
+
 } else {
     header('Location: ../index.php');
     exit();
+}
+
+if($profile_image) {
+  $path = '';
+} else {
+  $path = 'images/';
 }
 
 ?>
@@ -40,10 +49,10 @@ if (isset($_SESSION['username'])) {
               <p class="greet">Hello, <?php echo $firstname; ?>!</p>
               <div class="profile">
                 <img
-                  src="../images/efraim.jpg"
+                  src="../<?php echo $path ?><?php echo ($profile_image) ? $profile_image : 'anonymous.jpg'; ?>"
                   alt="Profile Picture"
                   class="profile-image"
-                />
+              />
                 <div class="dropdown" id="dropdown">
                   <a href="profiles.php"
                     ><i class="fas fa-cogs"></i> Edit Profile</a

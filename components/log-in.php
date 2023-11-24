@@ -77,7 +77,7 @@ include 'connection.php';
                 $_SESSION['username'] = $username;
                 $_SESSION['firstname'] = $row['firstname'];
                 $_SESSION['lastname'] = $row['lastname'];
-
+                $_SESSION['profile'] = $row['user_image'];
                 header('Location: user.php');
                 exit();
               ?>

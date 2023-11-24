@@ -109,7 +109,8 @@ if ($quiz_name !== null) {
     $total_questions = count($correctAnswers);
 
 
-    mysqli_query($con,"insert into quiz_results values(NULL,'$username','$quiz_name', '$total_questions','$score',CURDATE())") or die(mysql_error($con));
+
+    mysqli_query($con,"insert into quiz_results values(NULL,'$name','$quiz_name', '$total_questions','$score',CURDATE())") or die(mysql_error($con));
 
         // $result = mysqli_query($con, $query);
 

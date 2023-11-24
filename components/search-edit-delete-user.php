@@ -1,11 +1,44 @@
 <?php
-if (isset($_POST['user_id'])) {
+include 'connection.php';
+?>
+<?php  include 'admin-header.php';
+?>
+<div class="admin">
+  <?php
+    include 'admin-panel.php';
+    ?>
+    <div class="admin-add-quiz">
+      <div class="dash-main">
+        <div class="dash-left">
+          <div class="aaq-text">
+            <h2 class="aa-title">Search / Edit / Delete User</h2>
+          </div>
+         
+        </div>
+        <div class="dash-right">
+          <div class="nav-search">
+              <form action="" method="POST">
+                <button type="submit" name="search" class="h-btn">Submit
+                  <span class="fa-solid fa-magnifying-glass nav-search-btn"></span>
+                </button>
+                <input
+                  type="text"
+                  placeholder="Search User..."
+                  name="user_id"
+                  id="topic-search"
+                />
+              </form>
+            </div>
+        </div>
+      </div> 
+      <!-- end dash main -->
+    <?php
+    if (isset($_POST['user_id'])) {
     $user_id = $_POST['user_id'];
     $res = mysqli_query($con, "SELECT * FROM user WHERE id = '$user_id'");
-    
+     $row = mysqli_fetch_array($res);
     // Check if the query returned any rows
-    if ($res && mysqli_num_rows($res) > 0) {
-        $row = mysqli_fetch_array($res);
+    if ($row) {
         $userId = $row['id'];
         $fname = $row['firstname'];
         $lname = $row['lastname'];
@@ -32,6 +65,7 @@ if (isset($_POST['user_id'])) {
                         <th>Section</th>
                         <th>Address</th>
                         <th>Contact Number</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +80,12 @@ if (isset($_POST['user_id'])) {
                       <td><?php echo $userSection ?></td>
                       <td><?php echo $userAddress ?></td>
                       <td><?php echo $userContactNumber ?></td>
+                      <td>
+                        <div class="action">
+                          <a href="edit-user.php?id=<?php echo $userId ?>" class="edit">Edit</a>
+                          <a href="delete-user.php?id=<?php echo $userId ?>" class="delete">Delete</a>
+                        </div>
+                      </td>
                   </tr>
                 </tbody>
             </table>
@@ -53,8 +93,16 @@ if (isset($_POST['user_id'])) {
 
 <?php
     } else {
-        // Display an error message if no user is found
-        echo "User not found";
+        ?>
+        <h2 class="aa-title q-res">No User Found</h2>
+        <?php
     }
 }
 ?>
+      <!-- end search -->
+       
+
+  </div>
+</div>
+</body>
+</html>

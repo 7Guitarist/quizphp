@@ -8,6 +8,9 @@ if (
     "quiz-score.php",
     "profiles.php",
     "take-quiz.php",
+    "dashboard.php",
+    "add-question.php",
+    "add-edit-questions.php",
   ].includes(window.location.pathname.split("/").pop())
 ) {
   // Profile Dropdown
@@ -29,6 +32,7 @@ if (
 
 // This
 // if (window.location.pathname.split("/").pop() === "sign-up.php")
+// Sign up
 console.log(window.location.pathname.split("/").pop() === "sign-up.php"); //FIXME:
 if (
   ["admin.php", "sign-up.php"].includes(
@@ -108,7 +112,7 @@ if (window.location.pathname.split("/").pop() === "log-in.php") {
 
 // Edit Profile Validation
 if (
-  ["edit-profile.php", "sample.php"].includes(
+  ["edit-profile.php", "sample.php", "edit-user.php"].includes(
     window.location.pathname.split("/").pop()
   )
 ) {
